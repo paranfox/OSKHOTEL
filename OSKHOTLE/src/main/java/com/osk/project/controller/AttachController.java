@@ -44,11 +44,9 @@ public class AttachController {
    @PostMapping("/attach")
    public String attachPOST(AttachVO attachVO) {
       log.info("attachPost()");
-<<<<<<< HEAD
-      log.info("attachDTO = " + attachVO);
-=======
+
       log.info("attachVO = " + attachVO);
->>>>>>> branch 'master' of https://github.com/paranfox/OSKHOTEL.git
+
       MultipartFile file = attachVO.getFile();
 
       // UUID 생성

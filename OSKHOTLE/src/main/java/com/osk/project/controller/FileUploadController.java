@@ -52,9 +52,4 @@ public class FileUploadController {
          } 
       }
    } // end uploadsPost()
-   
-<<<<<<< HEAD
-} // end FileUploadController 
-=======
-} // end FileUploadController 
->>>>>>> branch 'master' of https://github.com/paranfox/OSKHOTEL.git
+}

@@ -6,10 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.osk.project.domain.AttachVO;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/paranfox/OSKHOTEL.git
 @Mapper
 public interface AttachMapper {
     int insert(AttachVO attach);
