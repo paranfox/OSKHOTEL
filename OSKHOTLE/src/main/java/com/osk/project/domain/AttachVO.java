@@ -16,7 +16,7 @@ import lombok.ToString;
 public class AttachVO {
    private int attachId;
    private int boardId;
-   private int attachPath;
+   private String attachPath;
    private String attachRealName;
    private String attachChgName;
    private String attachExtension;
