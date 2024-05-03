@@ -9,6 +9,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class MembershipVO {
-
+public class ReservationInfoVO {
+	
 }
