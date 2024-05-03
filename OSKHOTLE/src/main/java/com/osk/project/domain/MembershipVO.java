@@ -10,5 +10,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class MembershipVO {
-
-}
+	private int membershipId; // MEMBERSHIP_ID
+	private int membershipName; // MEMBERSHIP_NAME
+	private int membershipDiscount; // MEMBERSHIP_DISCOUNT
+	
+} // MembershipVO

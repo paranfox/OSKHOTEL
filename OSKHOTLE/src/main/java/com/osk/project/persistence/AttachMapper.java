@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.osk.project.domain.AttachVO;
 
-
 @Mapper
 public interface AttachMapper {
     int insert(AttachVO attach);

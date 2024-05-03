@@ -52,5 +52,4 @@ public class FileUploadController {
          } 
       }
    } // end uploadsPost()
-   
-} // end FileUploadController 
+}
