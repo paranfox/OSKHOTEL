@@ -1,6 +1,8 @@
 package com.osk.project.domain;
 
+
 import lombok.AllArgsConstructor;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,4 +20,5 @@ public class UserVO {
    private String userEmail; // USER_EMAIL
    private String userPhone; // USER_PHONE
    private String userMembership; // USER_MEMBERSHIP
+
 }
