@@ -13,4 +13,4 @@ public class ScoreVO {
 	private int scoreNo;
 	private int scoreHotelNo;
 	private String scoreUserId;
-}
+} // end ScoreVO
