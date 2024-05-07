@@ -13,12 +13,13 @@ import lombok.ToString;
 @ToString
 public class ReviewVO {
 	private int reviewNo;
-	private String reviewConfirm;
-	private String reviewName;
+	private String reviewLodgingType;
+	private int reviewLodgingNo;
+	private String reviewUserId;
+	private String reviewReservationNo;
+	private String reviewTitle;
 	private int reviewScore;
 	private String reviewContent;
-	private String reviewReservationNo;
 	private Date reviewDate;
-	
-	
+
 }

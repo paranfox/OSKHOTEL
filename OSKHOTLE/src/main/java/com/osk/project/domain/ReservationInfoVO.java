@@ -13,8 +13,9 @@ import lombok.ToString;
 @ToString
 public class ReservationInfoVO {
 	private int reservationNo;
+	private String reservationLodgingType;
+	private int reservationLodgingNo;
 	private int reservationRoomNo;
-	private int reservationHotelNo;
 	private String reservationUserId;
 	private Date reservationCheckIn;
 	private Date reservationCheckOut;
