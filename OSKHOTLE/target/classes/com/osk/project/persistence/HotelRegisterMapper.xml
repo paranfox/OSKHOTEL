@@ -68,6 +68,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!-- 특정 호텔 삭제 -->
 		DELETE FROM BOARD
 		WHERE BOARD_ID = #{boardId}
+		
 	</delete>
 
 	<select id="selectListByPagination"
