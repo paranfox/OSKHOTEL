@@ -2,7 +2,11 @@ package com.osk.project.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
 import com.osk.project.domain.BoardVO;
+import com.osk.project.domain.UserVO;
 import com.osk.project.util.Pagination;
 
 public interface BoardService {
