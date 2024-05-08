@@ -33,7 +33,7 @@ PUBLIC "-//mybaris.org//DTO Mapper 3.0//EN"
 		SELECT * FROM RESERVATION_INFO ORDER BY RESERVATION_NO DESC
 	</select>
 	
-	<select id="selectListByDate" result="reservationinfoResultMap"> <!-- 일정 기간 내의 예약 정보 검색 -->
+	<select id="selectListByDate" resultMap="reservationinfoResultMap"> <!-- 일정 기간 내의 예약 정보 검색 -->
 		SELECT * FROM RESERVATION_INFO
 		WHERE RESERVATION_CHECK_IN BETWEEN #{reservationCheckIn} AND #{reservationCheckOut} 
 		OR RESERVATION_CHECK_OUT BETWEEN #{reservationCheckIn} AND #{reservationCheckOut};
