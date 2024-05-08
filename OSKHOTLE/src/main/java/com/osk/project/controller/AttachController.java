@@ -44,9 +44,7 @@ public class AttachController {
    @PostMapping("/attach")
    public String attachPOST(AttachVO attachVO) {
       log.info("attachPost()");
-
-      log.info("attachVO = " + attachVO);
-
+      log.info("attachDTO = " + attachVO);
       MultipartFile file = attachVO.getFile();
 
       // UUID 생성
