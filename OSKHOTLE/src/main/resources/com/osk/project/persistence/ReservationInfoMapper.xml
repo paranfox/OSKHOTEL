@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.osk.project.persistence.ReservationInfoMapper">
+	
+	<resultMap type="com.osk.project.domain.ReservationInfoVO" id="reservationinfoResultMap">
+		
+		<id property="reservationNo" column="RESERVATION_NO" />
+		<result property="reservationLodgingType" column="RESERVATION_LODGING_TYPE" />
+		<result property="reservationLodgingNo" column="RESERVATION_LODGING_NO" />
+		<result property="reservationRoomNo" column="RESERVATION_ROOM_NO" />
+		<result property="reservationUserId" column="RESERVATION_USERID" />
+		<result property="reservationUserName" column="RESERVATION_USERNAME" />
+		<result property="reservationCheckIn" column="RESERVATION_CHECK_IN" />
+		<result property="reservationCheckOut" column="RESERVATION_CHECK_OUT" />
+		<result property="reservationTotalPrice" column="RESERVATION_TOTAL_PRICE" />
+		
+	</resultMap>
+	
+	<insert id="insert">
+		INSERT INTO RESERVATION_INFO
+		(RESERVATION_NO, RESERVATION_LODGING_TYPE, RESERVATION_LODGING_NO,
+		RESERVATION_ROOM_NO, RESERVATION_USERID, RESERVATION_USERNAME, 
+		RESERVATION_CHECK_IN, RESERVATION_CHECK_OUT, RESERVATION_TOTAL_PRICE)
+		VALUES (RESERVATION_INFO_SEQ.NEXTVAL, #{reservationLodgingType}, #{reservationLodgingNo}, 
+		#{reservationRoomNo}, #{reservationUserId}, #{reservationUserName},
+		#{reservationCheckIn}, #{reservationCheckOut}, #{reservationTotalPrice})
+	</insert>
+	
+	<select id="selectList">
+		SELECT * FROM RESERVATION_INFO
+		ORDER BY RESERVATION_NO DESC
+	</select>
+	
+	<select id="selectListByDate">
+		SELECT * FROM RESERVATION_INFO
+		WHERE RESERVATION_CHECK_IN BETWEEN #{reservationCheckIn} AND #{reservationCheckOut} 
+		OR RESERVATION_CHECK_OUT BETWEEN #{reservationCheckIn} AND #{reservationCheckOut}
+	</select>
+	
+	<update id="update">
+		UPDATE RESERVATION_INFO
+		SET RESERVATION_USERNAME = #{reservationUserName}, 
+    		RESERVATION_CHECK_IN = #{reservationCheckIn},
+    		RESERVATION_CHECK_OUT = #{reservationCheckOut}
+		WHERE RESERVATION_NO = #{reservationNo}
+	</update>
+	
+	<delete id="delete">
+		DELETE RESERVATION_INFO
+		WHERE RESERVATION_NO = #{reservationNo}
+	</delete>
+	
+	
+	
+</mapper>
