@@ -5,7 +5,7 @@ import java.util.List;
 import com.osk.project.domain.HotelInfoVO;
 import com.osk.project.util.Pagination;
 
-public interface hotelInfoService {
+public interface HotelInfoService {
 	int createBoard(HotelInfoVO hotelInfoVO);
 	  List<HotelInfoVO> getAllBoards();
 	  HotelInfoVO getBoardById(int hotelno);

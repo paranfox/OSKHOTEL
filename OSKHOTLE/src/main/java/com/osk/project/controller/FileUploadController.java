@@ -17,7 +17,7 @@ public class FileUploadController {
    @Autowired
    private String uploadPath; // Bean으로 설정된 uploadPath() 객체 주입 
    
-   // upload.jsp 페이지 호출
+   // upload.jsp 페이지 호출 
    @GetMapping("/upload")
    public void uploadGET() {
       log.info("uploadGET()");
