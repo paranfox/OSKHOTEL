@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="hotelAddress" column="HOTEL_ADDRESS" />
 		<result property="hotelLatitude" column="HOTEL_LATITUDE" />
 		<result property="hotelLongitude" column="HOTEL_LONGGITUDE" />
-		<result property="hotelScoreAvg" column="HOTEL_SCOREAVG" />
+		<result property="hotelScoreavg" column="HOTEL_SCOREAVG" />
 		<result property="loding" column="LODGING" />
 
 	</resultMap>
