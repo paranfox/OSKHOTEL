@@ -4,13 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>OSKHOTEL MAIN</title>
+<title>Insert title here</title>
 </head>
 <body>
-<%@include file="fix/header.jsp" %>
-	<div>
-	index 안에 있는 내용
-	</div>
-	
-	
-<%@ include file="fix/footer.jsp"%>
+
+</body>
+</html>
