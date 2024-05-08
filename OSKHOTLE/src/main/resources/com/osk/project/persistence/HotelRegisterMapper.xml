@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="hotelLatitude" column="HOTEL_LATITUDE" />
 		<result property="hotelLongitude" column="HOTEL_LONGGITUDE" />
 		<result property="hotelScoreAvg" column="HOTEL_SCOREAVG" />
-		<result property="loding" column="LODGING" />
+		<result property="lodging" column="LODGING" />
 
 	</resultMap>
 
@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO HOTEL_INFO
 		(HOTEL_NO, HOTEL_NAME, HOTEL_ROOM_NO, HOTEL_DETAIL, HOTEL_ADDRESS, LODGING)
 		VALUES (HOTEL_INFO_SEQ.NEXTVAL, #{hotelName}, #{hotelRoomNo}, #{hotelDetail},
-		#{hotelAddress}, #{loding})
+		#{hotelAddress}, #{lodging})
 	</insert>
 	<!-- #{변수명} : Mapper 인터페이스 메소드 매개변수와 매핑되어 전송된 데이터를 적용 -->
 
