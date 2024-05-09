@@ -15,7 +15,7 @@
 
         <label for="hotelRoomNo">Hotel Room Type :</label>
         <select id="hotelRoomNo" name="hotelRoomNo" required>
-        	<option value="0">선택을 해 주세요</option>
+        	<option value="">선택을 해 주세요</option>
             <option value="1">Single Room</option>
             <option value="2">Double Room</option>
             <option value="3">Suite</option>
