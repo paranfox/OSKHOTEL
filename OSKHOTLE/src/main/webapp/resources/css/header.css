@@ -1,11 +1,16 @@
 @charset "UTF-8";
-header {
+a {
+	text-decoration: none;
+}
+
+.header_blank {
 	background-color: lightgray;
 	font-weight: bold;
 	font-size: 30pt;
 	height: 50px;
+	display: flex;
 }
 
-a {
-	text-decoration: none;
+.logo {
+	align-items: center;
 }
