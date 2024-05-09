@@ -24,6 +24,7 @@ li {
 <meta charset="UTF-8">
 <title>게시판 메인 페이지</title>
 </head>
+<%@include file="../fix/header.jsp" %>
 <body>
    <h1>게시판</h1>
    <!-- 글 작성 페이지 이동 버튼 -->

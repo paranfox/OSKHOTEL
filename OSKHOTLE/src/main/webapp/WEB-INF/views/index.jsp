@@ -9,8 +9,6 @@
 <body>
 <%@include file="fix/header.jsp" %>
 	<div>
-	index 안에 있는 내용
+	<a href="register/basics"> index 안에 있는 내용 </a>
 	</div>
-	
-	
 <%@ include file="fix/footer.jsp"%>

@@ -6,12 +6,12 @@ import com.osk.project.domain.HotelInfoVO;
 import com.osk.project.util.Pagination;
 
 public interface HotelInfoService {
-	int createBoard(HotelInfoVO hotelInfoVO);
-	  List<HotelInfoVO> getAllBoards();
-	  HotelInfoVO getBoardById(int hotelno);
-	  int updateBoard(HotelInfoVO hotelInfoVO);
-	  int deleteBoard(int hotelno);
-	  List<HotelInfoVO> getPagingBoards(Pagination pagination);
+	int createHotel(HotelInfoVO hotelInfoVO);
+	  List<HotelInfoVO> getAllHotels();
+	  HotelInfoVO getHotelById(int hotelno);
+	  int updateHotel(HotelInfoVO hotelInfoVO);
+	  int deleteHotel(int hotelno);
+	  List<HotelInfoVO> getPagingHotels(Pagination pagination);
 	  int getTotalCount();
 	
 }
