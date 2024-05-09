@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="userName" column="USER_NAME" />
 		<result property="userEmail" column="USER_EMAIL" />
 		<result property="userPhone" column="USER_PHONE" />
-		<result property="userMembership" column="USER_Membership" />
+		<result property="userMembership" column="USER_MEMBERSHIP" />
 	</resultMap>
 
 	<!-- <select>, <insert>, <update>, <delete> : SQL 쿼리 정의 태그 - 속성 id : Mapper 
@@ -30,11 +30,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertUser"> <!-- id가 insert랑 같아야 함 -->
 		<!-- 게시글 등록 -->
 		INSERT INTO HOTEL_USER
-		(USER_ID, USER_PASSWORD, USER_NAME, USER_EMAIL, USER_PHONE, USER_Membership)
 
 		VALUES
-		(#{userId}, #{userPassword}, #{userName}, #{userEmail},
-		#{userPhone}, NULL)
+		(#{userId}, #{userPassword}, #{userName},
+		#{userEmail},
+		#{userPhone},
+		null)
 	</insert>
 	<!-- #{변수명} : Mapper 인터페이스 메소드 매개변수와 매핑되어 전송된 데이터를 적용 -->
 
@@ -47,6 +48,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getUserById" resultMap="userResultMap"> <!-- MAPPING 한것 -->
 		<!-- 전체 게시글 조회 -->
 		SELECT * FROM HOTEL_USER WHERE USER_ID = #{userId}
+		<!-- SELECT BOARD_ID, BOARD_TITLE, BOARD_CONTENT, MEMBER_ID, BOARD_DATE_CREATED -->
+	</select>
+
+	<select id="logincheck" resultMap="userResultMap"> <!-- MAPPING 한것 -->
+		<!-- 전체 게시글 조회 -->
+		SELECT USER_NAME
+		FROM HOTEL_USER
+		WHERE userId=#{userId} and userPassword=#{userPassword}
 		<!-- SELECT BOARD_ID, BOARD_TITLE, BOARD_CONTENT, MEMBER_ID, BOARD_DATE_CREATED -->
 	</select>
 

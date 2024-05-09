@@ -23,7 +23,7 @@ import lombok.extern.log4j.Log4j;
 
 @Controller // @Component
 // - 클라이언트(JSP 페이지 등)와 service를 연결하는 역할
-@RequestMapping(value="/board") // url : /ex02/board
+@RequestMapping(value="/user") // url : /ex02/board
 @Log4j
 public class UserController {
 
@@ -32,7 +32,7 @@ public class UserController {
 	
 	@GetMapping("/signup")
     public String toSignupPage() {  //회원가입 페이지
-        return "board/signup";
+        return "user/signup";
     }
 	
 	@PostMapping("/signup")
@@ -40,31 +40,31 @@ public class UserController {
 		try {
 			userService.signup(userVO);
 		} catch (DuplicateKeyException e) {
-			return "redirect:/board/signup?error_code=-1";
+			return "redirect:/user/signup?error_code=-1";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "redirect:/board/signup?error_code=-99";
+			return "redirect:/user/signup?error_code=-99";
 		}
-		return "board/login";
+		return "user/login";
 	}
 	
     @GetMapping("/login")
     public String toLoginPage(HttpSession session) { // 로그인 페이지
-    	String id = (String) session.getAttribute("userId");
-    	if (id != null) { // 로그인된 상태
-    		return "redirect:/board/";
+    	String username = (String) session.getAttribute("userName");
+    	if (username != null) { // 로그인된 상태
+    		return "redirect:/";
     	}
-    	return "board/login";
+    	return "user/login";
     }
 	
     @PostMapping("/login")
     public String login(String userId, String userPassword, HttpSession session) { // 로그인
-    	String id = userService.login(userId, userPassword);
-    	if (id == null) { // 로그인 실패
-    		return "redirect:/board/login";
+    	String username = userService.login(userId, userPassword);
+    	if (username == null) { // 로그인 실패
+    		return "redirect:/user/login";
     	}
-    	session.setAttribute("userId", id);
-    	return "redirect:/board/";
+    	session.setAttribute("userName", username);
+    	return "redirect:/user/";
     }
 	
 }
