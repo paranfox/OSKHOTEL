@@ -204,8 +204,7 @@
 			<option value="3407">충남</option>
 			<option value="3406">충북</option></select> <br> <br>  <span
 			class="help-block">도시를 입력해 주세요</span> <br> <br>
-			<select name="" title="" id=""><option value="0" hidden=""
-				disabled=""></option>
+			<select name="" title="" id=""><option value="0" hidden="" disabled=""></option>
 			<option value="3409">강원</option>
 			<option value="3411">경기</option>
 			<option value="3413">경남</option>
