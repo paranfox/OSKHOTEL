@@ -22,6 +22,6 @@ public class HotelInfoVO {
 	private int hotelLatitude; // HOTEL_LATITUDE
 	private int hotelLongitude; // HOTEL_LONGITUDE
 	private int hotelScoreAvg; // HOTEL_SCOREAVG
-	private String loding; // LODGING
-
+	private String lodging; // LODGING
+	
 } // end HotelInfoVO

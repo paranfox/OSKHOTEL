@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybaris.org//DTO Mapper 3.0//EN"
+"http://mybatis/.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.osk.project.persistence.ReviewMapper">
+	
+	<resultMap type="com.osk.project.domain.ReviewVO" id="reviewResultMap">
+		
+		<id property="reviewNo" column="REVIEW_NO" />
+		<result property="reviewLodgingType" column="REVIEW_LODGING_TYPE" />
+		<result property="reviewLodgingNo" column="REVIEW_LODGING_NO" />
+		<result property="reviewUserId" column="REVIEW_USERID" />
+		<result property="reviewReservationNo" column="REVIEW_RESERVATION_NO" />
+		<result property="reviewTitle" column="REVIEW_TITLE" />
+		<result property="reviewScore" column="REVIEW_SCORE" />
+		<result property="reviewContent" column="REVIEW_CONTENT" />
+		<result property="reviewDate" column="REVIEW_DATE" />				
+		
+	</resultMap>
+	
+	<insert id="insert"> <!-- 리뷰글 등록 -->
+		INSERT INTO REVIEW
+		(REVIEW_NO, REVIEW_LODGING_TYPE, REVIEW_LODING_NO, 
+		REVIEW_USERID, REVIEW_RESERVATION_NO, REVIEW_TITLE, 
+		REVIEW_SCORE, REVIEW_CONTENT, REVIEW_DATE)
+		VALUES (REVIEW_SEQ.NEXTVAL, #{reviewLodgingType}, #{reviewLodgingNo}, 
+		#{reviewUserId}, #{reviewReservationNo}, #{reviewTitle}, 
+		#{reviewScore}, #{reviewContent}, #{reviewDate})
+	</insert> 
+	
+	<select id="selectListByHotel" resultMap="reviewResultMap"> <!-- 호텔별 리뷰글 조회 -->
+		SELECT * FROM REVIEW
+		WHERE REVIEW_LODGING_TYPE = 
+		(
+			SELECT LODGING FROM HOTEL_INFO
+			WHERE LODGING = #{lodging}
+		) 
+		AND REVIEW_LODGING_NO = 
+		(
+			SELECT HOTEL_NO FROM HOTEL_INFO
+			WHERE HOTEL_NO = #{hotelNo}
+		)
+	</select>
+	
+	<select id="selectListByCondo" resultMap="reviewResultMap"> <!-- 콘도별 리뷰글 조회 -->
+		SELECT * FROM REVIEW
+		WHERE REVIEW_LODGING_TYPE = 
+		(
+			SELECT LODGING FROM CONDO_INFO
+			WHERE LODGING = #{lodging}
+		) 
+		AND REVIEW_LODGING_NO = 
+		(
+			SELECT CONDO_NO FROM CONDO_INFO
+			WHERE CONDO_NO = #{condoNo}
+		)
+	</select>
+	
+	<select id="selectListbyResort" resultMap="reviewResultMap"> <!-- 리조트별 리뷰글 조회 -->
+		SELECT * FROM REVIEW
+		WHERE REVIEW_LODGING_TYPE = 
+		(
+			SELECT LODGING FROM RESORT_INFO
+			WHERE LODGING = #{lodging}
+		) 
+		AND REVIEW_LODGING_NO = 
+		(
+			SELECT RESORT_NO FROM RESORT_INFO
+			WHERE RESORT_NO = #{resortNo}
+		)
+	</select>
+	
+	<update id="update"> <!-- 리뷰글(제목, 별점, 내용) 수정 -->
+		UPDATE REVIEW
+		SET REVIEW_TITLE = #{reviewTitle}
+			REVIEW_SCORE = #{reviewScore}
+			REVIEW_CONTENT = #{reviewContent}
+		WHERE REVIEW_NO = #{reviewNo}
+	</update>
+	
+	<delete id="delete"> <!-- 리뷰글 삭제 -->
+		DELETE REVIEW
+		WHERE REVIEW_NO = #{reviewNo}
+	</delete>
+	
+	
+	
+	
+</mapper>

@@ -3,8 +3,11 @@ package com.osk.project.persistence;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.osk.project.domain.ReservationInfoVO;
 
+@Mapper
 public interface ReservationInfoMapper {
 	int insert(ReservationInfoVO reservationInfoVO); // 예약 등록
 	List<ReservationInfoVO> selectList(); // 전체 예약 목록

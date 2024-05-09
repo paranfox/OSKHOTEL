@@ -1,7 +1,5 @@
 package com.osk.project.persistence;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 
 import com.osk.project.domain.UserVO;
