@@ -37,7 +37,7 @@ public class UserController {
 			return "redirect:/user/signup?error_code=-1";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "redirect:/user/signup?error_code=-99";
+			return "redirect:/user/signup?error_code=-2";
 		}
 		return "user/login";
 	}
@@ -46,7 +46,7 @@ public class UserController {
     public String toLoginPage(HttpSession session) { // 로그인 페이지
     	String username = (String) session.getAttribute("userName");
     	if (username != null) { // 로그인된 상태
-    		return "redirect:/";
+    		return "redirect:../index";
     	}
     	return "user/login";
     }
@@ -58,7 +58,14 @@ public class UserController {
     		return "redirect:/user/login";
     	}
     	session.setAttribute("userName", username);
-    	return "redirect:/user/";
+    	session.setMaxInactiveInterval(10*60);
+    	return "index";
+    }
+    
+    @GetMapping("/logout")
+    public String logout(HttpSession session) { // 로그아웃
+        session.invalidate();
+        return "index";
     }
 	
 }

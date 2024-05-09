@@ -48,8 +48,9 @@ public class UserServiceImple implements UserService {
 	@Override
 	public String login(String userId, String userPassword) {
 		UserVO uservo = userMapper.getUserById(userId);
-		if(uservo.getUserPassword().equals(userPassword))
+		if(uservo != null && uservo.getUserPassword().equals(userPassword))
 			return uservo.getUserName();
+		System.out.println("아이디와 비밀번호가 맞지 않습니다");
 		return null;
 	}
 	

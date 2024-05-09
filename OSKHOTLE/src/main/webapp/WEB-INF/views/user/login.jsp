@@ -7,6 +7,7 @@
     <title>Login</title>
 </head>
 <body>
+<%@include file="../fix/header.jsp" %>
     <form action="login" method="post">
     <h2>로그인</h2>
         <div>
