@@ -7,8 +7,7 @@ import com.osk.project.domain.UserVO;
 @Mapper
 public interface UserMapper {
    int insertUser(UserVO userVO); // 회원정보 등록
-   UserVO getUserByEmail(String userEmail); // 특정 회원정보 조회
-   UserVO getUserById(String userId); 
+   UserVO getUserById(String userId); // 로그인 
    int updateUser(UserVO userVO); // 특정 회원정보 수정
-   int deleteUser(String userId); // 특정 회원정보 삭제
+   void deleteUser(String userId); // 특정 회원정보 삭제
 } // end ReplyMapper

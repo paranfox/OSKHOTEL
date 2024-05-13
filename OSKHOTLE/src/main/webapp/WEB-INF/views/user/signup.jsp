@@ -7,6 +7,7 @@
     <title>Sign Up</title>
 </head>
 <body>
+<%@include file="../fix/header.jsp" %>
     <h1>회원 가입</h1>
     <form action="signup" method="post">
         <div>
