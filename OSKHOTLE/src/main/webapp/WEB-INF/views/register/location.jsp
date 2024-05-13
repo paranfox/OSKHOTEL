@@ -211,7 +211,7 @@
 			<option value="3412">경북</option>
 			<option value="3410">광주</option>
 			<option value="3416">대구</option>
-			<option value="3417">대전</option>ㅁㅋ
+			<option value="3417">대전</option>
 			<option value="3414">부산</option>
 			<option value="3415">서울</option>
 			<option value="3418">울산</option>
