@@ -13,6 +13,6 @@ public interface UserService {
    void logout(HttpSession session);
    UserVO seleteOne(String userId);
    int update(UserVO userVO);
-   int delete(String userId);
+   void delete(String userId);
    
 }

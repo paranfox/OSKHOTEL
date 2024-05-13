@@ -25,6 +25,7 @@
 				<button type="button" onclick="location.href='${path}/user/login'">로그인</button>
 			</c:if>
 		</div>
+
 	</div>
 
 </body>

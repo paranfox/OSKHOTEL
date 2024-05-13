@@ -39,19 +39,20 @@ public class UserServiceImple implements UserService {
 	}
 
 	@Override
-	public int delete(String userId) {
+	public void delete(String userId) {
 		log.info("delete()");
-		return userMapper.deleteUser(userId);
+	    userMapper.deleteUser(userId);
 	}
 
 	
 	@Override
 	public String login(String userId, String userPassword) {
 		UserVO uservo = userMapper.getUserById(userId);
-		if(uservo != null && uservo.getUserPassword().equals(userPassword))
-			return uservo.getUserName();
-		System.out.println("아이디와 비밀번호가 맞지 않습니다");
-		return null;
+		if(uservo != null && uservo.getUserPassword().equals(userPassword)) {
+			return uservo.getUserId();
+		}
+		System.out.println("아이디와 비밀번호가 맞지 않습니다");			
+		return null; // TODO : 수정하기
 	}
 	
 	

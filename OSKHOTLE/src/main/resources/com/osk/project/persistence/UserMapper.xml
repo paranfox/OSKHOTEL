@@ -32,10 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO HOTEL_USER
 
 		VALUES
-		(#{userId}, #{userPassword}, #{userName},
-		#{userEmail},
-		#{userPhone},
-		null)
+		(#{userId}, #{userPassword}, #{userName}, #{userEmail}, #{userPhone}, null)
 	</insert>
 	<!-- #{변수명} : Mapper 인터페이스 메소드 매개변수와 매핑되어 전송된 데이터를 적용 -->
 
@@ -45,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!-- SELECT BOARD_ID, BOARD_TITLE, BOARD_CONTENT, MEMBER_ID, BOARD_DATE_CREATED -->
 	</select>
 
-	<select id="getUserById" resultMap="userResultMap"> <!-- MAPPING 한것 -->
+    <select id="getUserById" resultMap="userResultMap"> <!-- MAPPING 한것 -->
 		<!-- 전체 게시글 조회 -->
 		SELECT * FROM HOTEL_USER WHERE USER_ID = #{userId}
 		<!-- SELECT BOARD_ID, BOARD_TITLE, BOARD_CONTENT, MEMBER_ID, BOARD_DATE_CREATED -->
@@ -64,22 +61,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM BOARD WHERE BOARD_ID = #{boardId}
 	</select>
 
-	<update id="update">
+	<update id="updateUser">
 		<!-- 특정 게시글 수정 -->
-		UPDATE BOARD SET
-		BOARD_TITLE = #{boardTitle},
-		BOARD_CONTENT =
-		#{boardContent},
-		BOARD_DATE_CREATED = SYSDATE
-		WHERE BOARD_ID =
-		#{boardId}
+		UPDATE HOTEL_USER SET
+		USER_NAME = #{userName},
+		USER_PASSWORD = #{userPassword},
+		USER_EMAIL = #{userEmail},
+		USER_PHONE = #{userPhone}
+		WHERE USER_ID = #{userId}
 	</update>
 
-	<delete id="delete">
+	<delete id="deleteUser">
 		<!-- 특정 게시글 삭제 -->
 
-		DELETE FROM BOARD
-		WHERE BOARD_ID = #{boardId}
+		DELETE FROM HOTEL_USER
+		WHERE USER_ID = #{userId}
 	</delete>
 
 
