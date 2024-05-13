@@ -10,4 +10,5 @@ public interface UserMapper {
    UserVO getUserById(String userId); // 로그인 
    int updateUser(UserVO userVO); // 특정 회원정보 수정
    void deleteUser(String userId); // 특정 회원정보 삭제
+   int useridCheck(String userId); // 아이디 중복
 } // end ReplyMapper
