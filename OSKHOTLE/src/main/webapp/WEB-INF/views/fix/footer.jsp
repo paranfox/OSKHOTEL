@@ -15,23 +15,23 @@
     <div class="footer-container">
         <div class="footer-section">
             <h3>About Us</h3>
-            <p>목쌤의 코딩 사이트입니다!</p>
+            <p>OSKHOTEL 사이트입니다!</p>
         </div>
         <div class="footer-section">
             <h3>Contact Us</h3>
-            <p>Email: mokcoding@example.com<br>Phone: 123-456-7890</p>
+            <p>Email: oskhotel@gmail.com<br>Phone: 010-2345-9876</p>
         </div>
         <div class="footer-section">
             <h3>Follow Us</h3>
             <ul class="social-links">
-                <li><a href="#" target="_blank">Facebook</a></li>
-                <li><a href="#" target="_blank">Twitter</a></li>
-                <li><a href="#" target="_blank">Instagram</a></li>
+                <li><a href="#" target="_blank">여기어때</a></li>
+                <li><a href="#" target="_blank">야놀자</a></li>
+                <li><a href="#" target="_blank">아고다</a></li>
             </ul>
         </div>
     </div>
     <div class="copyright">
-        <p>© 2024 Mokcoding. All rights reserved.</p>
+        <p>© 2024 OSKHOTEL. All rights reserved.</p>
     </div>
 </footer>
 </body>
