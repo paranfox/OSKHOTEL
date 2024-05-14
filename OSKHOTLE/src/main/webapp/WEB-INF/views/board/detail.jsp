@@ -11,6 +11,7 @@
 <meta charset="UTF-8">
 <title>${boardVO.boardTitle }</title>
 </head>
+
 <body>
    <h2>글 보기</h2>
    <div>

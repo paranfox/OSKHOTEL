@@ -1,7 +1,5 @@
 package com.osk.project.domain;
 
-import java.util.Date;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +9,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class LodgingVO { // 숙소 종류
-
-} // LodgingVO
+public class HotelCityVO {
+	private int countryNo; // COUNTRY_NO
+	private int cityNo; // CITY_NO
+	private String cityName; // CITY_NAME
+	
+}

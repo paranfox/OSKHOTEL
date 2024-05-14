@@ -22,13 +22,10 @@ public class RoomInfoVO {
 	private int roomPrice;
 	
 	
-	
 	public String getroomServiceListJoin() {
 		   String result = (roomServiceList == null) ? "없음" : String.join(",", roomServiceList);
 		   return result;
-	   
 	}
 
 	
 }
-
