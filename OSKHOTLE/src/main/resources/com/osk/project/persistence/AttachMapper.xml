@@ -5,47 +5,56 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.osk.project.persistence.AttachMapper">
 
-   <resultMap type="com.osk.project.domain.AttachVO"
-      id="attachResultMap">
-      
-      <id property="attachId" column="ATTACH_ID" /> 
-      <result property="boardId" column="BOARD_ID" />
-      <result property="attachPath" column="ATTACH_PATH" />
-      <result property="attachRealName" column="ATTACH_REAL_NAME" />
-      <result property="attachChgName" column="ATTACH_CHG_NAME" />
-      <result property="attachExtension" column="ATTACH_EXTENSION"/>
-      <result property="attachDateCreated" column="ATTACH_DATE_CREATED"/>
-   </resultMap>
+	<resultMap type="com.osk.project.domain.AttachVO"
+		id="attachResultMap">
 
-   <insert id="insert">
-      INSERT INTO ATTACH 
-      (ATTACH_ID, BOARD_ID, ATTACH_PATH, ATTACH_REAL_NAME, 
-      ATTACH_CHG_NAME, ATTACH_EXTENSION)
-      VALUES (ATTACH_SEQ.NEXTVAL, #{boardId}, #{attachPath}, #{attachRealName}, 
-      #{attachChgName}, #{attachExtension})
-   </insert>
+		<id property="attachId" column="ATTACH_ID" />
+		<result property="boardId" column="BOARD_ID" />
+		<result property="attachPath" column="ATTACH_PATH" />
+		<result property="attachRealName" column="ATTACH_REAL_NAME" />
+		<result property="attachChgName" column="ATTACH_CHG_NAME" />
+		<result property="attachExtension" column="ATTACH_EXTENSION" />
+		<result property="attachDateCreated"
+			column="ATTACH_DATE_CREATED" />
+	</resultMap>
 
-   <select id="selectByAttachId" resultMap="attachResultMap">
-      SELECT * FROM ATTACH 
-      WHERE ATTACH_ID = #{attachId}
-   </select>
 
-   <select id="selectIdList" resultType="Integer">
-      SELECT ATTACH_ID FROM ATTACH
-   </select>
 
-   <update id="update">
-      UPDATE ATTACH
-      SET ATTACH_PATH = #{attachPath},
-       ATTACH_REAL_NAME = #{attachRealName},
-       ATTACH_CHG_NAME = #{attachChgName},
-       ATTACH_EXTENSION = #{attachExtension}
-      WHERE ATTACH_ID = #{attachId}
-   </update>
+	<insert id="insert">
+		INSERT INTO ATTACH
+		(ATTACH_ID, BOARD_ID, ATTACH_PATH,
+		ATTACH_REAL_NAME,
+		ATTACH_CHG_NAME, ATTACH_EXTENSION)
+		VALUES
+		(ATTACH_SEQ.NEXTVAL, #{boardId}, #{attachPath}, #{attachRealName},
+		#{attachChgName}, #{attachExtension})
+	</insert>
 
-   <delete id="delete">
-      DELETE FROM ATTACH
-      WHERE ATTACH_ID = #{attachId}
-   </delete>
+	<select id="selectByAttachId" resultMap="attachResultMap">
+		SELECT * FROM ATTACH
+		WHERE ATTACH_ID = #{attachId}
+	</select>
+
+	<select id="selectIdList" resultType="Integer">
+		SELECT ATTACH_ID FROM
+		ATTACH
+	</select>
+
+	<update id="update">
+		UPDATE ATTACH
+		SET ATTACH_PATH = #{attachPath},
+		ATTACH_REAL_NAME = #{attachRealName},
+		ATTACH_CHG_NAME =
+		#{attachChgName},
+		ATTACH_EXTENSION = #{attachExtension}
+		WHERE ATTACH_ID
+		= #{attachId}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM ATTACH
+		WHERE ATTACH_ID = #{attachId}
+	</delete>
+
 
 </mapper>

@@ -27,6 +27,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</resultMap>
 
+	<resultMap type="com.osk.project.domain.HotelCountryVO"
+		id="hotelcountryResultMap">
+		<id property="countryNo" column="COUNTRY_NO" />
+		<result property="countryName" column="COUNTRY_NAME" />
+	</resultMap>
+
+	<resultMap type="com.osk.project.domain.HotelCityVO"
+		id="hotelcityResultMap">
+		<result property="countryNo" column="COUNTRY_NO" />
+		<result property="cityName" column="CITY_NAME" />
+	</resultMap>
 	<!-- <select>, <insert>, <update>, <delete> : SQL 쿼리 정의 태그 - 속성 id : Mapper 
 		인터페이스 메서드 매핑 역할. resultMap : 쿼리 결과를 resultMap에 매핑. <resultMap> 태그의 id를 적용 
 		resultType : 쿼리 결과를 클래스에 매핑 -->
@@ -35,17 +46,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insert"> <!-- id가 insert랑 같아야 함 -->
 		<!-- 호텔 등록 -->
 		INSERT INTO HOTEL_INFO
-		(HOTEL_NO, HOTEL_NAME, HOTEL_ROOM_NO, HOTEL_DETAIL, HOTEL_ADDRESS, LODGING)
-		VALUES (HOTEL_INFO_SEQ.NEXTVAL, #{hotelName}, #{hotelRoomNo}, #{hotelDetail},
-		#{hotelAddress}, #{lodging})
+		(HOTEL_NO, HOTEL_NAME, HOTEL_ROOM_NO,
+		HOTEL_DETAIL, HOTEL_ADDRESS, LODGING)
+		VALUES (HOTEL_INFO_SEQ.NEXTVAL,
+		#{hotelName}, #{hotelRoomNo}, #{hotelDetail},
+		#{hotelAddress},
+		#{lodging})
 	</insert>
 	<!-- #{변수명} : Mapper 인터페이스 메소드 매개변수와 매핑되어 전송된 데이터를 적용 -->
 
 	<select id="selectList" resultMap="hotelinfoResultMap"> <!-- MAPPING 한것 -->
 		<!-- 호텔 조회 -->
 		SELECT * FROM HOTEL_INFO ORDER BY HOTEL_NO DESC
-		<!-- HOTEL_NO, HOTEL_NAME, HOTEL_YEAR, HOTEL_ROOM_NO, HOTEL_DETAIL, HOTEL_ADDRESS,
-		HOTEL_LATITUDE, HOTEL_LONGITUDE, HOTEL_SCOREAYG, LODGING -->
+		<!-- HOTEL_NO, HOTEL_NAME, HOTEL_YEAR, HOTEL_ROOM_NO, HOTEL_DETAIL, HOTEL_ADDRESS, 
+			HOTEL_LATITUDE, HOTEL_LONGITUDE, HOTEL_SCOREAYG, LODGING -->
 	</select>
 
 	<select id="selectOne" resultMap="hotelinfoResultMap">
@@ -68,7 +82,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!-- 특정 호텔 삭제 -->
 		DELETE FROM BOARD
 		WHERE BOARD_ID = #{boardId}
-		
+
 	</delete>
 
 	<select id="selectListByPagination"
@@ -84,7 +98,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- resultType : 쿼리 결과를 자바 객체에 매핑하기 위해 사용 -->
 	<!-- Type은 참조타입을 넣어야 한다. 그리고 반환이 1개라고 map을 안씀 -->
 	<select id="selectTotalCount" resultType="Integer">
-		SELECT COUNT(*) TOTAL_COUNT FROM BOARD
+		SELECT COUNT(*)
+		TOTAL_COUNT FROM BOARD
 	</select>
 
 	<update id="updateReplyCount">
@@ -92,6 +107,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SET REPLY_COUNT = REPLY_COUNT + #{amount}
 		WHERE BOARD_ID = #{boardId}
 	</update>
+
+	<select id="getAllCountry" resultMap="hotelcountryResultMap">
+		SELECT * FROM
+		OSKHOTEL_ADDRESS_DETAIL
+	</select>
+
+	<select id="getAllCity" resultMap="hotelcityResultMap">
+		SELECT * FROM
+		OSKHOTEL_ADDRESS_DETAIL_COLL
+		WHERE COUNTRY_NO = #{countryNo}
+	</select>
 
 </mapper>
 

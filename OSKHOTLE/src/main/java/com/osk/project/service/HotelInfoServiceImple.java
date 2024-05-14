@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.osk.project.domain.HotelCityVO;
+import com.osk.project.domain.HotelCountryVO;
 import com.osk.project.domain.HotelInfoVO;
 import com.osk.project.persistence.HotelInfoMapper;
 import com.osk.project.util.Pagination;
@@ -14,10 +16,10 @@ import lombok.extern.log4j.Log4j;
 @Service
 @Log4j
 public class HotelInfoServiceImple implements HotelInfoService {
-	
+
 	@Autowired
 	private HotelInfoMapper hotelInfoMapper;
-	
+
 	@Override
 	public int createHotel(HotelInfoVO hotelInfoVO) {
 		log.info("createHotel()");
@@ -59,6 +61,22 @@ public class HotelInfoServiceImple implements HotelInfoService {
 	public int getTotalCount() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<HotelCountryVO> getAllCountry() {
+		log.info("getAllCountry()");
+		List<HotelCountryVO> hotelcountryVO = hotelInfoMapper.getAllCountry();
+		log.info("hotelcountryVO 확인" + hotelcountryVO);
+		return hotelcountryVO;
+	}
+
+	@Override
+	public List<HotelCityVO> getAllCity(int countryNo) {
+		log.info("getAllCity()");
+		List<HotelCityVO> hotelcityVO = hotelInfoMapper.getAllCity(countryNo);
+		log.info("hotelcityVO 확인" + hotelcityVO);
+		return hotelcityVO;
 	}
 
 }
