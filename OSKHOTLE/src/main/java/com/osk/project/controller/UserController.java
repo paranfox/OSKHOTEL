@@ -9,8 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.osk.project.domain.UserVO;
+import com.osk.project.persistence.UserMapper;
 import com.osk.project.service.UserService;
 
 import lombok.extern.log4j.Log4j;
@@ -41,6 +44,7 @@ public class UserController {
 		}
 		return "user/login";
 	}
+	
 
 	@GetMapping("/login")
 	public String toLoginPage(HttpSession session) { // 로그인 페이지
@@ -103,4 +107,6 @@ public class UserController {
 		session.invalidate();
 		return "index";
 	}
+	
+
 }

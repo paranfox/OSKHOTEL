@@ -16,7 +16,7 @@
         <div>
             <input type="password" name="userPassword" placeholder="비밀번호"/>
         </div>
-
+        <br>
         <button type="submit">로그인</button>
         <button type="button" onclick="location.href='signup'">회원가입</button>
     </form>

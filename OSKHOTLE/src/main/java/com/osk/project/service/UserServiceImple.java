@@ -25,7 +25,7 @@ public class UserServiceImple implements UserService {
 		int result = userMapper.insertUser(uservo);
 		return result;
 	}
-
+	
 	@Override
 	public UserVO seleteOne(String userId) {
 		log.info("seleteOne()");
@@ -55,12 +55,17 @@ public class UserServiceImple implements UserService {
 		return null; // TODO : 수정하기
 	}
 	
-	
-
 	@Override
 	public void logout(HttpSession session) {
 		session.invalidate(); // 세션 초기화
 	}
+
+	@Override
+	public int userIdCheck(String userId) {
+		log.info("userIdCheck()");
+		return userMapper.useridCheck(userId);
+	}
+
 
 
 }
