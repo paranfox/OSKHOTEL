@@ -61,9 +61,18 @@ public class UserServiceImple implements UserService {
 	}
 
 	@Override
-	public int userIdCheck(String userId) {
+	public Integer userIdCheck(String userId) {
 		log.info("userIdCheck()");
-		return userMapper.useridCheck(userId);
+		log.info(userId);
+		int result = userMapper.useridCheck(userId);
+		if (result == 1) {
+		    // 처리할 코드: 중복이 있는 경우
+			System.out.println("아이디가 중복입니다.");			
+			return 1; // TODO : 수정하기	
+		} else {
+			System.out.println("사용할 수 있는 아이디입니다.");
+			return result;
+		}
 	}
 
 

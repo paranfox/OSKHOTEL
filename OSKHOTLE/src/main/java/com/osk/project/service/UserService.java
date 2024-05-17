@@ -11,7 +11,7 @@ public interface UserService {
    int signup(UserVO uservo);
    String login(String userId, String userPassword);
    void logout(HttpSession session);
-   int userIdCheck(String userId);
+   Integer userIdCheck(String userId);
    UserVO seleteOne(String userId);
    int update(UserVO userVO);
    void delete(String userId);
