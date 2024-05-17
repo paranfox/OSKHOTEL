@@ -20,7 +20,6 @@ public class HotelInfoController {
 	@Autowired
 	private HotelInfoService hotelInfoService;
 	private HotelInfoVO hotelInfoVO;
-	
 
 	// 호텔 등록 기본 페이지 이동(GET)
 	@GetMapping("/basics")
@@ -40,6 +39,24 @@ public class HotelInfoController {
 	private void hotelregisterdescription() {
 		log.info("hotelregisterdescription()");
 	} /// end hotelregisterdescription()
+
+	// 호텔 등록 편의시설 페이지 이동(GET)
+	@GetMapping("/amenities")
+	private void hotelregisteramenities() {
+		log.info("hotelregisteramenities()");
+	} /// end hotelregisterdamenities()
+
+	// 호텔 등록 가격등록 페이지 이동(GET)
+	@GetMapping("/pricing")
+	private void hotelregisterpricing() {
+		log.info("hotelregisterpricing()");
+	} /// end hotelregisterpricing()
+
+	// 호텔 등록 사진등록 페이지 이동(GET)
+	@GetMapping("/photos")
+	private void hotelregisterphotos() {
+		log.info("hotelregisterphotos()");
+	} /// end hotelregisterphotos()
 
 	// 호텔 등록 페이지 이동(GET)
 //	@GetMapping("/hotelregisterok")
@@ -63,14 +80,40 @@ public class HotelInfoController {
 		this.hotelInfoVO.setHotelName(hotelInfoVO.getHotelName());
 		log.info("hotelInfoVO = " + hotelInfoVO.toString());
 		return "redirect:/register/location";
-	} // end hotelbasics()
+	} // end hotelinsertPOST()
 
-	@PostMapping("location")
+	@PostMapping("/location")
 	private String hotellocation(HotelInfoVO hotelInfoVO, RedirectAttributes reAttr) {
 		log.info("hotelinsertPOST()");
 		this.hotelInfoVO.setHotelAddress(hotelInfoVO.getHotelAddress());
 		log.info("this.hotelInfoVO = " + this.hotelInfoVO.toString());
 		return "redirect:/register/description";
-	} // end hotellocation()
+	} // end hotelinsertPOST()
 
+	@PostMapping("/description")
+	private String hoteldescription(HotelInfoVO hotelInfoVO, RedirectAttributes reAttr) {
+		log.info("hoteldescriptionPOST()");
+		return "redirect:/register/amenities";
+	} // end hoteldescriptionPOST()
+
+	// TODO : 편의시설에서 선택됭 값들을 전부 저장
+	@PostMapping("/amenities")
+	private String hotelamenities(HotelInfoVO hotelInfoVO, RedirectAttributes reAttr) {
+		log.info("hotelamenitiesPOST()");
+		
+		
+		return "redirect:/register/pricing";
+	} // end hotelamenitiesPOST()
+
+	@PostMapping("/pricing")
+	private String hotelpricing(HotelInfoVO hotelInfoVO, RedirectAttributes reAttr) {
+		log.info("hotelpricingPOST()");
+		return "redirect:/register/photos";
+	} // end hotelpricingPOST()
+	
+	@PostMapping("/photos")
+	private String hotelphotos(HotelInfoVO hotelInfoVO, RedirectAttributes reAttr) {
+		log.info("hotelphotosPOST()");
+		return "index";
+	} // end hotelphotosPOST()
 }
