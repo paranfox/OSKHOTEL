@@ -21,4 +21,5 @@ public interface ReservationInfoMapper {
 	List<ReservationInfoVO> selectListByPagination(Pagination pagination);
 	int selectTotalCount();
 	
+	
 } // end ReservationInfoMapper

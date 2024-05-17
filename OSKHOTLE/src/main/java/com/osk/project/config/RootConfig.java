@@ -52,4 +52,6 @@ public class RootConfig {
    public PlatformTransactionManager transactionManager() {
       return new DataSourceTransactionManager(dataSource());
    }
+   
+   
 } // end RootConfig
