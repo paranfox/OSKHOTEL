@@ -36,28 +36,24 @@
 <body>
 	<div class="container">
 		<h1>나의 Reservations</h1>
-		<br>
-		<form action="reservationList" method="post">
-			<input type="date" id="reservationCheckIn" name="reservationCheckIn" value="${pagination.reservationCheckIn }">
-			 ~ 
-			<input type="date" id="reservationCheckOut" name="reservationCheckOut" value="${pagination.reservationCheckOut }">
-			<select id="searchType">
-				<option value="reservationNo">예약 날짜</option>
-				<option value="reservationChechIn">체크인 날짜</option>
-			</select>
-			<input type="submit" value="검색">
-		</form>
-		<div class="pageSize">
-			<select id="pageSize" name="pageSize" onChange="pageChange()">
-				<option value="5" <c:if test="${pagination.pageSize == 5 }">selected</c:if>>5줄 보기</option>
-				<option value="10" <c:if test="${pagination.pageSize == 10 }">selected</c:if>>10줄 보기</option>
-				<option value="15" <c:if test="${pagination.pageSize == 15 }">selected</c:if>>15줄 보기</option>
-				<option value="20" <c:if test="${pagination.pageSize == 20 }">selected</c:if>>20줄 보기</option>
-			</select>
-		</div>
-		<br>
 		<div class="row">
 			<div class="col-md-12">
+				<form action="../reservationInfo/reservationList" method="post">
+					<input type="date" id="reservationCheckIn" name="reservationCheckIn" value="${pagination.reservationCheckIn }">
+					 ~ 
+					<input	type="date" id="reservationCheckOut" name="reservationCheckOut"	value="${pagination.reservationCheckOut }">
+					<select id="searchType">
+						<option value="reservationNo">예약 날짜</option>
+						<option value="reservationChechIn">체크인 날짜</option>
+					</select>
+					<input type="submit" value="검색">
+				</form>
+				<select class="pageSize" id="pageSize" name="pageSize" onChange="pageChange()">
+					<option value="5" <c:if test="${pagination.pageSize == 5 }">selected</c:if>>5줄 보기</option>
+					<option value="10" <c:if test="${pagination.pageSize == 10 }">selected</c:if>>10줄 보기</option>
+					<option value="15" <c:if test="${pagination.pageSize == 15 }">selected</c:if>>15줄 보기</option>
+					<option value="20" <c:if test="${pagination.pageSize == 20 }">selected</c:if>>20줄 보기</option>
+				</select>
 				<table class="table">
 					<thead>
 						<tr>
