@@ -19,6 +19,5 @@
       <input type="file" name="files" multiple="multiple"><br>
       <input type="submit" value="업로드">
    </form>
-   
 </body>
 </html>
