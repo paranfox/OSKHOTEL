@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-PUBLIC "-//mybaris.org//DTO Mapper 3.0//EN"
-"http://mybatis/.org/dtd/mybatis-3-mapper.dtd">
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.osk.project.persistence.ReviewMapper">
 	
@@ -71,6 +71,11 @@ PUBLIC "-//mybaris.org//DTO Mapper 3.0//EN"
 		)
 	</select>
 	
+	<select id="selectOne" resultMap="reviewResultMap">
+		SELECT * FROM REVIEW
+		WHERE REVIEW_NO = #{reviewNo}
+	</select>
+	
 	<update id="update"> <!-- 리뷰글(제목, 별점, 내용) 수정 -->
 		UPDATE REVIEW
 		SET REVIEW_TITLE = #{reviewTitle}
@@ -84,7 +89,16 @@ PUBLIC "-//mybaris.org//DTO Mapper 3.0//EN"
 		WHERE REVIEW_NO = #{reviewNo}
 	</delete>
 	
+	<select id="selectListByPagination" resultMap="reviewResultMap"> <!-- 페이징 처리 -->
+		SELECT * FROM (
+		SELECT ROW_NUMBER() OVER (ORDER BY REVIEW_NO DESC) AS RN, REVIEW.* 
+		FROM REVIEW
+		)
+		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
 	
-	
+	<select id="selectTotalCount" resultType="Integer"> <!-- 리뷰글 전체 개수 -->
+		SELECT COUNT(*) TOTAL_COUNT FROM REVIEW
+	</select>
 	
 </mapper>

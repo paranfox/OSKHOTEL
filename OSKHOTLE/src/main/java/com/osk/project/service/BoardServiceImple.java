@@ -22,6 +22,7 @@ public class BoardServiceImple implements BoardService{
 	public int createBoard(BoardVO boardVO) {
 	    log.info("createBoard()");
 	    int result = boardMapper.insert(boardVO);
+	    
 		return result;
 	}
 

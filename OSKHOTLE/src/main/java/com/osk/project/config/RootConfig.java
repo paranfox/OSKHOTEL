@@ -34,7 +34,8 @@ public class RootConfig {
       config.setPassword("1234"); // DB 사용자 비밀번호
       
       config.setMaximumPoolSize(10); // 최대 풀(Pool) 크기 설정
-      config.setConnectionTimeout(30000); // Connection 타임 아웃 설정(30초)
+      config.setConnectionTimeout(30000); // Connection 타임 아웃 설정(3초)
+      config.setMaxLifetime(177000);
       HikariDataSource ds = new HikariDataSource(config); // config 객체를 참조하여 DataSource 객체 생성
       return ds; // ds 객체 리턴
    }
@@ -51,4 +52,6 @@ public class RootConfig {
    public PlatformTransactionManager transactionManager() {
       return new DataSourceTransactionManager(dataSource());
    }
+   
+   
 } // end RootConfig
