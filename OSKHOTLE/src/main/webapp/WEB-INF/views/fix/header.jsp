@@ -8,7 +8,8 @@
 <meta charset="UTF-8">
 <title>OSKHOTEL HEADER</title>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<link rel="stylesheet" href="${path}/resources/css/header.css" />
+<link rel="stylesheet" href="${path}/resources/css/header.css?ver=1" />
+<link rel="stylesheet" href="${path}/resources/css/description.css?ver=1" />
 </head>
 <body>
 	<div class="header_blank">

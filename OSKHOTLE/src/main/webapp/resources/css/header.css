@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 a {
 	text-decoration: none;
 }
@@ -32,4 +33,42 @@ a {
 #loginSection button {
 	margin-left: auto;
 	 margin-right: 10px;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.main-content {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.main, .main-1 {
+    margin-bottom: 20px;
+}
+
+.main-1-1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.main-1-1 label {
+    display: block;
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

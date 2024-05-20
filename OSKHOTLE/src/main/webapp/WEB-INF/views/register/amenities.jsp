@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>호텔 등록 편의시설 페이지</title>
+<link rel="stylesheet" href="../${path}/resources/css/amenities.css" />
 </head>
 <body>
 	<%@include file="../fix/header.jsp"%>
@@ -25,7 +26,7 @@
 					<label><input type="checkbox" id="workspace">책상/</label>
 					<label><input type="checkbox" id="keyless">키리스(Keyless) 액세스</label>
 					<label><input type="checkbox" id="beachfront">비치프런트</label>
-					<label><input type="checkbox" id="free-parking">무료 주차&nbsp;</label>
+					<label><input type="checkbox" id="free-parking">무료 주차 </label>
 					<label><input type="checkbox" id="free-wifi">무료 Wi-Fi</label>
 					<label><input type="checkbox" id="heating">난방</label>
 					<label><input type="checkbox" id="basic-kitchen-appliances">기본 주방용품 (취사도구,식용유, 조미료)</label>

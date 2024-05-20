@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>호텔 등록 상세내용 페이지</title>
-<link rel="stylesheet" href="../${path}/resources/css/description.css" />
 </head>
 <body>
 	<%@include file="../fix/header.jsp"%>

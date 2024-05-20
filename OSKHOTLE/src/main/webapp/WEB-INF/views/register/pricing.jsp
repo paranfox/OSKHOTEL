@@ -10,7 +10,7 @@
 	<%@include file="../fix/header.jsp"%>
 	<form method="post" action="${path}/register/pricing">
 	<label>1박당 가격</label>
-	<input type="text" placeholder="가격을 입력해 주세요">
+	<input type="number" min="10000" placeholder="가격을 입력해 주세요">
 	
 	<input type="submit" value="다음">
 	</form>
