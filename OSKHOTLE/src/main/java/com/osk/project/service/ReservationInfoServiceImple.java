@@ -34,7 +34,7 @@ public class ReservationInfoServiceImple implements ReservationInfoService {
 	}
 
 	@Override
-	public List<ReservationInfoVO> getBoardsByDate(Date reservationCheckIn, Date reservationCheckOut) {
+	public List<ReservationInfoVO> getBoardsByDate(String reservationCheckIn, String reservationCheckOut) {
 		log.info("getBoardsByDate()");
 		return reservationInfoMapper.selectListByDate(reservationCheckIn, reservationCheckOut);
 	}
@@ -64,9 +64,9 @@ public class ReservationInfoServiceImple implements ReservationInfoService {
 	}
 
 	@Override
-	public int getTotalCount() {
+	public int getTotalCount(Pagination pagination) {
 		log.info("selectTotalCount()");
-		return reservationInfoMapper.selectTotalCount();
+		return reservationInfoMapper.selectTotalCount(pagination);
 	}
 
 

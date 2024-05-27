@@ -21,7 +21,7 @@
             <option value="3">Suite</option>
         </select><br><br>
 
-		<input type="hidden" id="lodging" name="lodging" value="H">
+		<input type="hidden" id="lodgingType" name="lodgingType" value="H">
 		
         <input type="submit" value="다음">
     </form>

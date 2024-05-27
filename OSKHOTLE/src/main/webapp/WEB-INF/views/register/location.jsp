@@ -14,7 +14,7 @@
 		<label for="streetAddressInput" class="control-label">주소</label><br>
 		<br> <input name="hotelAddress" placeholder="여기에 입력하세요" required maxlength="50"><br>
 		<br> <label class="control-label">건물/빌딩/동, 층, 호수 (선택사항) </label><br>
-		<br> <input placeholder="여기에 입력하세요" maxlength="50"><br>
+		<br> <input name="hotelAddressDetail" placeholder="여기에 입력하세요" maxlength="50"><br>
 		<br> <label class="control-label">도/주(시/도)</label><br> <br>
 		<select id="countrybox" name="countrybox" required>
 		
@@ -29,7 +29,7 @@
 				사항)</small><br> <br>
 		</label><input placeholder="#####" maxlength="13" maxlength="6">
 		<br> <br>
-		 <input type="hidden" id="lodging" name="lodging" value="H"> 
+		 <input type="hidden" id="lodgingType" name="lodgingType" value="H"> 
 		<input type="submit" value="다음">
 	</form>
 

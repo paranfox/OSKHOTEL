@@ -1,6 +1,5 @@
 package com.osk.project.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.osk.project.domain.ReservationInfoVO;
@@ -33,24 +31,16 @@ public class ReservationInfoController  {
 		log.info("reservationlist()");
 		log.info("pagination = " + pagination);
 		List<ReservationInfoVO> reservationlist = reservationInfoService.getPagingBoards(pagination);
-
+		log.info("reservationList() = " + reservationlist);
+		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setPagination(pagination);
-		pageMaker.setTotalCount(reservationInfoService.getTotalCount());
+		pageMaker.setTotalCount(reservationInfoService.getTotalCount(pagination));
 		
+		model.addAttribute("pagination", pagination);
 		model.addAttribute("reservationList", reservationlist);
 		model.addAttribute("pageMaker", pageMaker);
 			
-	}
-	
-	@PostMapping("/reservationList")
-	public String reservationListPOST(Model model, Date reservationCheckIn, Date reservationCheckOut, RequestAttributes reAttr) {
-		log.info("reservationListPOST()");
-		List<ReservationInfoVO> reservationList = reservationInfoService.getBoardsByDate(reservationCheckIn, reservationCheckOut);
-		
-		model.addAttribute("reservationList", reservationList);
-		
-		return "redirect;/reservationInfo/reservationList";	
 	}
 	
 	// reservationInsert.jsp 페이지 호출
@@ -74,7 +64,9 @@ public class ReservationInfoController  {
 	@GetMapping("/reservationDetail")
 	public void reservationDetail(Model model, Integer reservationNo) {
 		log.info("reservationDetail()");
+		log.info("reservationNo = " + reservationNo);
 		ReservationInfoVO reservationInfoVO = reservationInfoService.getBoardByNo(reservationNo);
+		log.info(reservationInfoVO);
 		model.addAttribute("reservationInfoVO", reservationInfoVO);
 	}
 	

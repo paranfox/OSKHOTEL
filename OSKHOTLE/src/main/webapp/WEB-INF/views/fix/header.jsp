@@ -13,8 +13,8 @@
 <body>
 	<div class="header_blank">
 		<a class="logo" href="${path}/index"> OSKHOTEL</a>
-		<%-- 세션에 값이 있으면 로그인 상태로 간주 --%>
 		<div id="loginSection">
+			<%-- 세션에 값이 있으면 로그인 상태로 간주 --%>
 			<c:if test="${not empty sessionScope}">
 				<button type="button" onclick="location.href='${path}/user/mypage'">${sessionScope.userId}
 					마이페이지</button>

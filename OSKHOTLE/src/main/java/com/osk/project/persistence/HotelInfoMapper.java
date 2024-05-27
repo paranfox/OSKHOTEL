@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.osk.project.domain.HotelCityVO;
-import com.osk.project.domain.HotelCountryVO;
+import com.osk.project.domain.CityVO;
+import com.osk.project.domain.CountryVO;
 import com.osk.project.domain.HotelInfoVO;
 import com.osk.project.util.Pagination;
 
@@ -25,6 +25,6 @@ public interface HotelInfoMapper {
 	int updateReplyCount(@Param("hotelno") int hotelno, @Param("amount") int amount);
 	// @Param : 자바 객체의 속성을 mapper에 매핑
 
-	List<HotelCountryVO> getAllCountry();
-	List<HotelCityVO> getAllCity(int countryNo);
+	List<CountryVO> getAllCountry();
+	List<CityVO> getAllCity(int countryNo);
 } // end HotelRegisterMapper

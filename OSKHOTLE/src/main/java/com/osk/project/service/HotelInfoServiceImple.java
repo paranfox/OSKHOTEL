@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.osk.project.domain.HotelCityVO;
-import com.osk.project.domain.HotelCountryVO;
+import com.osk.project.domain.CityVO;
+import com.osk.project.domain.CountryVO;
 import com.osk.project.domain.HotelInfoVO;
 import com.osk.project.persistence.HotelInfoMapper;
 import com.osk.project.util.Pagination;
@@ -64,17 +64,17 @@ public class HotelInfoServiceImple implements HotelInfoService {
 	}
 
 	@Override
-	public List<HotelCountryVO> getAllCountry() {
+	public List<CountryVO> getAllCountry() {
 		log.info("getAllCountry()");
-		List<HotelCountryVO> hotelcountryVO = hotelInfoMapper.getAllCountry();
+		List<CountryVO> hotelcountryVO = hotelInfoMapper.getAllCountry();
 		log.info("hotelcountryVO 확인" + hotelcountryVO);
 		return hotelcountryVO;
 	}
 
 	@Override
-	public List<HotelCityVO> getAllCity(int countryNo) {
+	public List<CityVO> getAllCity(int countryNo) {
 		log.info("getAllCity()");
-		List<HotelCityVO> hotelcityVO = hotelInfoMapper.getAllCity(countryNo);
+		List<CityVO> hotelcityVO = hotelInfoMapper.getAllCity(countryNo);
 		log.info("hotelcityVO 확인" + hotelcityVO);
 		return hotelcityVO;
 	}

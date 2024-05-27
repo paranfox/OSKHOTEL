@@ -79,6 +79,7 @@ public class HotelInfoController {
 		log.info("hotelinsertPOST()");
 		this.hotelInfoVO.setHotelName(hotelInfoVO.getHotelName());
 		log.info("hotelInfoVO = " + hotelInfoVO.toString());
+		
 		return "redirect:/register/location";
 	} // end hotelinsertPOST()
 
