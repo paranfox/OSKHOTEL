@@ -9,33 +9,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- <resultMap> : DB 쿼리 반환 데이터와 Entity 클래스의 멤버 변수 매핑을 정의하는 태그 - 속성 type 
 		: 연결할 클래스 id : SQL 쿼리 정의 태그에서 인식되는 이름 -->
-	<resultMap type="com.osk.project.domain.HotelInfoVO"
-		id="hotelinfoResultMap">
+	<resultMap type="com.osk.project.domain.HotelInfoVO" id="hotelinfoResultMap">
 
 		<!-- <id> : key 컬럼 매핑 태그 <result> : 컬럼 매핑 태그 - 속성 property : Entity 멤버 
 			변수 column : DB 테이블 컬럼 -->
-		<id property="hotelNo" column="BOARD_ID" />
+		<id property="hotelNo" column="HOTEL_NO" />
+		<result property="lodgingType" column="LODGING_TYPE" />
+		<result property="hotelAdmin" column="HOTEL_ADMIN" />
 		<result property="hotelName" column="HOTEL_NAME" />
 		<result property="hotelYear" column="HOTEL_YEAR" />
-		<result property="hotelRoomNo" column="HOTEL_ROOM_NO" />
-		<result property="hotelDetail" column="HOTEL_DETAIL" />
 		<result property="hotelAddress" column="HOTEL_ADDRESS" />
+		<result property="hotelAddressDetail" column="HOTEL_ADDRESS_DETAIL" />
 		<result property="hotelLatitude" column="HOTEL_LATITUDE" />
-		<result property="hotelLongitude" column="HOTEL_LONGGITUDE" />
-		<result property="hotelScoreAvg" column="HOTEL_SCOREAVG" />
-		<result property="lodging" column="LODGING" />
+		<result property="hotelLongitude" column="HOTEL_LONGITUDE" />
 
 	</resultMap>
 
-	<resultMap type="com.osk.project.domain.HotelCountryVO"
-		id="hotelcountryResultMap">
+	<resultMap type="com.osk.project.domain.CountryVO" id="countryResultMap">
 		<id property="countryNo" column="COUNTRY_NO" />
 		<result property="countryName" column="COUNTRY_NAME" />
 	</resultMap>
 
-	<resultMap type="com.osk.project.domain.HotelCityVO"
-		id="hotelcityResultMap">
-		<result property="countryNo" column="COUNTRY_NO" />
+	<resultMap type="com.osk.project.domain.CityVO" id="cityResultMap">
+		<id property="countryNo" column="COUNTRY_NO" />
 		<result property="cityName" column="CITY_NAME" />
 	</resultMap>
 	<!-- <select>, <insert>, <update>, <delete> : SQL 쿼리 정의 태그 - 속성 id : Mapper 
@@ -46,12 +42,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insert"> <!-- id가 insert랑 같아야 함 -->
 		<!-- 호텔 등록 -->
 		INSERT INTO HOTEL_INFO
-		(HOTEL_NO, HOTEL_NAME, HOTEL_ROOM_NO,
-		HOTEL_DETAIL, HOTEL_ADDRESS, LODGING)
-		VALUES (HOTEL_INFO_SEQ.NEXTVAL,
-		#{hotelName}, #{hotelRoomNo}, #{hotelDetail},
-		#{hotelAddress},
-		#{lodging})
+		(HOTEL_NO, LODGING_TYPE, HOTEL_ADMIN, HOTEL_NAME, HOTEL_YEAR, 
+		HOTEL_ADDRESS, HOTEL_ADDRESS_DETAIL, HOTEL_LATITUDE, HOTEL_LONGITUDE)
+		VALUES (HOTEL_INFO_SEQ.NEXTVAL, #{lodgingType}, #{hotelAdmin}, #{hotelName}, #{hotelYear}, 
+		#{hotelAddress}, #{hotelAddressDetail}, #{hotelLatitude}, #{hotelLongitude})
 	</insert>
 	<!-- #{변수명} : Mapper 인터페이스 메소드 매개변수와 매핑되어 전송된 데이터를 적용 -->
 
@@ -61,36 +55,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!-- HOTEL_NO, HOTEL_NAME, HOTEL_YEAR, HOTEL_ROOM_NO, HOTEL_DETAIL, HOTEL_ADDRESS, 
 			HOTEL_LATITUDE, HOTEL_LONGITUDE, HOTEL_SCOREAYG, LODGING -->
 	</select>
-
+	
+	<!-- 도시별 호텔 조회 -->
+	<select id="selectListByCity" resultMap="hotelinfoResultMap">
+		SELECT * FROM HOTEL_INFO WHERE HOTEL_ADDRESS LIKE '%'||#{cityName}||'%'
+	</select>
+	
+	<!-- 특정 호텔 조회 -->
 	<select id="selectOne" resultMap="hotelinfoResultMap">
-		<!-- 특정 호텔 조회 -->
 		SELECT * FROM HOTEL_INFO WHERE HOTEL_NO = #{hotelNo}
 	</select>
 
+	<!-- 특정 호텔 수정 -->
 	<update id="update">
-		<!-- 특정 호텔 수정 -->
-		UPDATE BOARD SET
-		BOARD_TITLE = #{boardTitle},
-		BOARD_CONTENT =
-		#{boardContent},
-		BOARD_DATE_CREATED = SYSDATE
-		WHERE BOARD_ID =
-		#{boardId}
+		UPDATE HOTEL_INFO 
+		SET HOTEL_NAME = #{hotelName},
+			HOTEL_YEAR = #{hotelYear},
+			HOTEL_ADDRESS = #{hotelAddress},
+			HOTEL_ADDRESS_DETAIL = #{hotelAddressDetail},
+			HOTEL_LATITUDE = #{hotelLatitude},
+			HOTEL_LONGITUDE = #{hotelLongitude}
+		WHERE HOTEL_ID = #{hotelNo}
 	</update>
 
+	<!-- 특정 호텔 삭제 -->
 	<delete id="delete">
-		<!-- 특정 호텔 삭제 -->
-		DELETE FROM BOARD
-		WHERE BOARD_ID = #{boardId}
-
+		DELETE HOTEL_INFO
+		WHERE HOTEL_NO = #{hotelNo}
 	</delete>
-
-	<select id="selectListByPagination"
-		resultMap="hotelinfoResultMap">
+	
+	<!-- 키워드(도시)기반 페이징 처리 필요(+본인 등록 숙소 관리페이지에서도 사용시 추가 SQL 작성 필요) -->
+	<select id="selectListByPagination" resultMap="hotelinfoResultMap">
 		SELECT * FROM (
-		SELECT ROW_NUMBER() OVER (ORDER BY BOARD_ID
-		DESC) AS RN, BOARD.*
-		FROM BOARD
+		SELECT ROW_NUMBER() OVER (ORDER BY HOTEL_ID DESC) AS RN, HOTEL_INFO.*
+		FROM HOTEL_INFO
 		)
 		WHERE RN BETWEEN #{start} AND #{end}
 	</select>
@@ -102,20 +100,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		TOTAL_COUNT FROM BOARD
 	</select>
 
-	<update id="updateReplyCount">
-		UPDATE BOARD
-		SET REPLY_COUNT = REPLY_COUNT + #{amount}
-		WHERE BOARD_ID = #{boardId}
-	</update>
-
-	<select id="getAllCountry" resultMap="hotelcountryResultMap">
-		SELECT * FROM
-		OSKHOTEL_ADDRESS_DETAIL
+	<select id="getAllCountry" resultMap="countryResultMap">
+		SELECT * FROM COUNTRY
 	</select>
 
-	<select id="getAllCity" resultMap="hotelcityResultMap">
-		SELECT * FROM
-		OSKHOTEL_ADDRESS_DETAIL_COLL
+	<select id="getAllCity" resultMap="cityResultMap">
+		SELECT * FROM CITY
 		WHERE COUNTRY_NO = #{countryNo}
 	</select>
 

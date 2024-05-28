@@ -1,9 +1,5 @@
 package com.osk.project.util;
 
-import java.util.Date;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -18,21 +14,22 @@ public class Pagination {
 	private String type; // 검색 항목
 	private String keyword; // 검색 키워드
 	
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date reservationCheckIn; // 시작 날짜
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	private Date reservationCheckOut; // 끝 날짜
+	private String reservationCheckIn; // 시작 날짜
+	private String reservationCheckOut; // 끝 날짜
 
 	public Pagination() {
 		this.pageNum = 1; // 기본 페이지 번호 설정
 		this.pageSize = 5; // 기본 페이지 사이즈 설정
+		this.reservationCheckIn = ""; // 기본 시작 날짜 설정
+		this.reservationCheckOut = ""; // 기본 끝 날짜 설정
+		
 	}
 
-	public Pagination(int page, int pageSize, Date reservationCheckIn, Date reservationCheckOut) {
+	public Pagination(int page, int pageSize, String reservationCheckIn, String reservationCheckOut) {
 		this.pageNum = page;
 		this.pageSize = pageSize;
 		this.reservationCheckIn = reservationCheckIn;
-		this.reservationCheckOut = reservationCheckOut;
+		this.reservationCheckOut = reservationCheckOut;		
 	}
 
 	// 선택된 페이지의 시작 글 일련번호(rn) - #{start}

@@ -22,12 +22,12 @@ public class UsercheckController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/useridCheck/{userId}") // GET 요청을 처리하는 메서드로 설정
+    @GetMapping("/useridCheck/{userId}") // POST 요청을 처리하는 메서드로 설정
     public ResponseEntity<Integer> useridCheck(@PathVariable("userId") String userId) {
-        log.info("userIdCheck: " + userId);
+    	System.out.println(userId);
         int result = userService.userIdCheck(userId);
-        log.info("Result: " + result);
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        System.out.println(result);
+        return new ResponseEntity<Integer>(result, HttpStatus.OK);
     }
 
 }

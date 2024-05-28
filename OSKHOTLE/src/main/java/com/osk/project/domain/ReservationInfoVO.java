@@ -2,6 +2,8 @@ package com.osk.project.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,8 +22,12 @@ public class ReservationInfoVO {
 	private String reservationUserId;
 	private String reservationFirstName;
 	private String reservationLastName;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date reservationCheckIn;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date reservationCheckOut;
+	private int reservationAdult;
+	private int reservationChild;
 	private int reservationTotalPrice;
 	
 } // end ReservationInfoVO

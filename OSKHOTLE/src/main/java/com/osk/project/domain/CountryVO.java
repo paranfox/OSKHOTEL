@@ -9,9 +9,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class HotelCityVO {
+public class CountryVO {
 	private int countryNo; // COUNTRY_NO
-	private int cityNo; // CITY_NO
-	private String cityName; // CITY_NAME
-	
+	private String countryName; // COUNTRY_NAME
 }

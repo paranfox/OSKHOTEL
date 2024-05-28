@@ -56,7 +56,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!-- SELECT BOARD_ID, BOARD_TITLE, BOARD_CONTENT, MEMBER_ID, BOARD_DATE_CREATED -->
 	</select>
 
-
     <select id="useridCheck" resultType="Integer"> <!-- MAPPING 한것 -->
 		SELECT COUNT(*) FROM HOTEL_USER WHERE USER_ID = #{userId}
 	</select>

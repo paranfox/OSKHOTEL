@@ -17,6 +17,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="reservationLastName" column="RESERVATION_LASTNAME" />
 		<result property="reservationCheckIn" column="RESERVATION_CHECK_IN" />
 		<result property="reservationCheckOut" column="RESERVATION_CHECK_OUT" />
+		<result property="reservationAdult" column="RESERVATION_ADULT" />
+		<result property="reservationChild" column="RESERVATION_CHILD" />
 		<result property="reservationTotalPrice" column="RESERVATION_TOTAL_PRICE" />
 		<result property="reservationDate" column="RESERVATION_DATE " />
 	
@@ -26,15 +28,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO RESERVATION_INFO
 		(RESERVATION_NO, RESERVATION_LODGING_TYPE, RESERVATION_LODGING_NO, RESERVATION_LODGING_NAME, 
 		RESERVATION_ROOM_NO, RESERVATION_USERID, RESERVATION_FIRSTNAME, RESERVATION_LASTNAME,  
-		RESERVATION_CHECK_IN, RESERVATION_CHECK_OUT, RESERVATION_TOTAL_PRICE, RESERVATION_DATE)
+		RESERVATION_CHECK_IN, RESERVATION_CHECK_OUT, RESERVATION_ADULT, RESERVATION_CHILD,
+		RESERVATION_TOTAL_PRICE, RESERVATION_DATE)
 		VALUES (RESERVATION_INFO_SEQ.NEXTVAL, #{reservationLodgingType}, #{reservationLodgingNo}, 
 		#{reservationLodgingName}, #{reservationRoomNo}, #{reservationUserId},
 		#{reservationFirstName}, #{reservationLastName}, #{reservationCheckIn}, 
-		#{reservationCheckOut}, #{reservationTotalPrice}, SYSDATE)	
+		#{reservationCheckOut}, #{reservationAdult}, #{reservationAdult},
+		#{reservationTotalPrice}, SYSDATE)	
 	</insert>
 	
 	<select id="selectList" resultMap="reservationinfoResultMap"> <!-- 전체 예약 정보 조회 -->
-		SELECT * FROM RESERVATION_INFO ORDER BY RESERVATION_NO DESC
+		SELECT * FROM RESERVATION_INFO ORDER BY RESERVATION_DATE DESC
 	</select>
 	
 	<select id="selectListByDate" resultMap="reservationinfoResultMap"> <!-- 일정 기간 내의 예약 정보 검색 -->
@@ -66,14 +70,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectListByPagination" resultMap="reservationinfoResultMap"> <!-- 페이징 처리 -->
 		SELECT * FROM (
-		SELECT ROW_NUMBER() OVER (ORDER BY RESERVATION_NO DESC) AS RN, RESERVATION_INFO.* 
+		SELECT ROW_NUMBER() OVER (ORDER BY RESERVATION_DATE DESC) AS RN, RESERVATION_INFO.* 
 		FROM RESERVATION_INFO
+		WHERE RESERVATION_USERID = 'test'
+		<choose>
+			<when test="reservationCheckIn == '' and reservationCheckOut != ''">
+				AND (RESERVATION_CHECK_IN <![CDATA[<=]]> #{reservationCheckOut}
+				OR RESERVATION_CHECK_OUT <![CDATA[<=]]> #{reservationCheckOut})
+			</when>
+			<when test="reservationCheckOut == '' and reservationCheckIn != ''">
+				AND (RESERVATION_CHECK_IN <![CDATA[>=]]> #{reservationCheckIn} 
+				OR RESERVATION_CHECK_IN <![CDATA[>=]]> #{reservationCheckIn})
+			</when>
+			<when test="reservationCheckIn != '' and reservationCheckOut != ''">
+				AND (RESERVATION_CHECK_IN BETWEEN #{reservationCheckIn} AND #{reservationCheckOut}  
+				OR RESERVATION_CHECK_OUT BETWEEN #{reservationCheckIn} AND #{reservationCheckOut}  
+				OR #{reservationCheckIn} BETWEEN RESERVATION_CHECK_IN AND RESERVATION_CHECK_OUT
+				OR #{reservationCheckOut} BETWEEN RESERVATION_CHECK_IN AND RESERVATION_CHECK_OUT)
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
 		)
 		WHERE RN BETWEEN #{start} AND #{end}
 	</select>
 	
 	<select id="selectTotalCount" resultType="Integer"> <!-- 예약 정보 전체 개수 -->
 		SELECT COUNT(*) TOTAL_COUNT FROM RESERVATION_INFO
+		WHERE RESERVATION_USERID = 'test'
+		<choose>
+			<when test="reservationCheckIn == '' and reservationCheckOut != ''">
+				AND (RESERVATION_CHECK_IN <![CDATA[<=]]> #{reservationCheckOut}
+				OR RESERVATION_CHECK_OUT <![CDATA[<=]]> #{reservationCheckOut})
+			</when>
+			<when test="reservationCheckOut == '' and reservationCheckIn != ''">
+				AND (RESERVATION_CHECK_IN <![CDATA[>=]]> #{reservationCheckIn} 
+				OR RESERVATION_CHECK_IN <![CDATA[>=]]> #{reservationCheckIn})
+			</when>
+			<when test="reservationCheckIn != '' and reservationCheckOut != ''">
+				AND (RESERVATION_CHECK_IN BETWEEN #{reservationCheckIn} AND #{reservationCheckOut}  
+				OR RESERVATION_CHECK_OUT BETWEEN #{reservationCheckIn} AND #{reservationCheckOut}  
+				OR #{reservationCheckIn} BETWEEN RESERVATION_CHECK_IN AND RESERVATION_CHECK_OUT
+				OR #{reservationCheckOut} BETWEEN RESERVATION_CHECK_IN AND RESERVATION_CHECK_OUT)
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
 	</select>
 	
 </mapper>
