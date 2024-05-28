@@ -5,12 +5,17 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>UPDATE</title>
+    <script type="text/javascript">
+        function confirmUpdate() {
+            return confirm("수정하시겠습니까?");
+        }
+    </script>
 </head>
 <body>
 <%@include file="../fix/header.jsp" %>
     <h2>${sessionScope.userId}님의 정보</h2>
-    <form action="update" method="post">
-    	<input type="hidden" name="userId" value="${sessionScope.userId}"/>
+    <form action="update" method="post" onsubmit="return confirmUpdate()">
+        <input type="hidden" name="userId" value="${sessionScope.userId}"/>
         <div>
             <label>이름(Name)</label> <br>
             <input type="text" name="userName" value="${UserVO.userName }"/>
@@ -32,6 +37,7 @@
         </div>
         <br>
         <button type="submit">회원정보 수정</button>
+        <button type="button" onclick="location.href='mypage'">마이페이지</button>
     </form>
 </body>
 </html>
