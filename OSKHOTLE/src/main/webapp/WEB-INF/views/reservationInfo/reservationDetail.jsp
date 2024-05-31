@@ -10,6 +10,7 @@
 <title>${reservationInfoVO.reservationLodgingName }</title>
 </head>
 <body>
+	 <%@include file="../fix/header.jsp"%>
 	<h2>예약 정보</h2>
 	<div>
 		<p>예약 번호 : ${reservationInfoVO.reservationNo }</p>
