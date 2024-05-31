@@ -1,6 +1,5 @@
 package com.osk.project.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +59,7 @@ public class ReservationInfoServiceImple implements ReservationInfoService {
 	@Override
 	public List<ReservationInfoVO> getPagingBoards(Pagination pagination) {
 		log.info("getPagingBoards()");
+//		log.info("userId = " + userId);
 		return reservationInfoMapper.selectListByPagination(pagination);
 	}
 

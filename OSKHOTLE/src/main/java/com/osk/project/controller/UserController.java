@@ -62,7 +62,7 @@ public class UserController {
 			return "redirect:/user/login";
 		}
 		session.setAttribute("userId", userid);
-		session.setMaxInactiveInterval(10 * 60);
+		session.setMaxInactiveInterval(10 * 360);
 		return "index";
 	}
 

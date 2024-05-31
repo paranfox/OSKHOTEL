@@ -15,7 +15,7 @@
     <div class="footer-container">
         <div class="footer-section">
             <h3>About Us</h3>
-            <p>OSKHOTEL 사이트입니다!</p>
+            <p>WELCOME TO OSKHOTEL!</p>
         </div>
         <div class="footer-section">
             <h3>Contact Us</h3>
@@ -24,9 +24,9 @@
         <div class="footer-section">
             <h3>Follow Us</h3>
             <ul class="social-links">
-                <li><a href="#" target="_blank">여기어때</a></li>
-                <li><a href="#" target="_blank">야놀자</a></li>
-                <li><a href="#" target="_blank">아고다</a></li>
+                <li><a href="https://www.yeogi.com/" target="_blank">여기어때</a></li>
+                <li><a href="https://www.yanolja.com/" target="_blank">야놀자</a></li>
+                <li><a href="https://www.agoda.com/ko-kr/" target="_blank">아고다</a></li>
             </ul>
         </div>
     </div>

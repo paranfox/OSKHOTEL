@@ -2,6 +2,8 @@ package com.osk.project.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,8 +29,11 @@ public class ReservationInfoController  {
 	
 	// 모든 예약 정보를 reservationList.jsp 페이지로 전송
 	@GetMapping("/reservationList")
-	public void reservationList(Model model, Pagination pagination) {
+	public void reservationList(Model model, Pagination pagination, HttpSession session) {
 		log.info("reservationlist()");
+		String userId = (String) session.getAttribute("userId");
+		log.info("userId = " + userId);
+		pagination.setUserId(userId);
 		log.info("pagination = " + pagination);
 		List<ReservationInfoVO> reservationlist = reservationInfoService.getPagingBoards(pagination);
 		log.info("reservationList() = " + reservationlist);

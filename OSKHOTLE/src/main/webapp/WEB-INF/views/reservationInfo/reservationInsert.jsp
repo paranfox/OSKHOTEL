@@ -12,20 +12,28 @@
 	<h1>숙소 예약</h1>
 	<form action="/reservationinsert" method="post">
 		<div>
-			<label>이름(First Name)</label> <br>
-			<input type="text" name="firstname"/> 
+			<p>이름(First Name)</p> <br>
+			<input type="text" name="firstname"> 
 		</div>
 		<div>
-			<label>성(Last Name)</label> <br>
-			<input type="text" name="lastname"/>
+			<p>성(Last Name)</p> <br>
+			<input type="text" name="lastname">
 		</div>
 		<br>
 		<div>
-			<label>이메일</label>
-			<input type="email" name="email" value="${UserVO.uesrEmail }"/>
+			<p>이메일</p>
+			<input type="email" name="email" value="${UserVO.uesrEmail }">
 		</div>
-		
-		
+		<div>
+			<p>전화번호</p>
+			<input type="text" name="phone" value="${UserVO.userPhone }">
+		</div>
+		<div>
+			<p><input type="checkbox" name="other"> 다른 사름을 위한 예약</p>
+		</div>
+		<div>
+			<input type="submit" value="결제하기">
+		</div>
 	</form>
 </body>
 </html>

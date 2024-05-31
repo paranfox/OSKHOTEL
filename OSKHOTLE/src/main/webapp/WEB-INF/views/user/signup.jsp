@@ -138,11 +138,11 @@ $(document).ready(function(){
          <div>
             <label>이메일(Email)</label> <br>
 			<input type="text" placeholder="이메일" name="userEmail" id="userEmail" class="userEmail">
-			<button type="button" id="email_auth_btn" class="email_auth_btn">인증번호 받기</button>
+			<!-- <button type="button" id="email_auth_btn" class="email_auth_btn">인증번호 받기</button> -->
 			<div><font id="email_feedback" size="2"></font></div>
-			<input type="text" placeholder="인증번호 입력" id="email_auth_key">
+			<!--  <input type="text" placeholder="인증번호 입력" id="email_auth_key"> -->
 	    </div>
-        <br><br>
+        <br>
         <div>
             <label>전화번호(Phone)</label> <br>
             <input type="text" placeholder="전화번호" name="userPhone" id="userPhone" autocomplete="off" required/>

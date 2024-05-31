@@ -72,21 +72,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM (
 		SELECT ROW_NUMBER() OVER (ORDER BY RESERVATION_DATE DESC) AS RN, RESERVATION_INFO.* 
 		FROM RESERVATION_INFO
-		WHERE RESERVATION_USERID = 'test'
+		WHERE RESERVATION_USERID = #{userId}
 		<choose>
-			<when test="reservationCheckIn == '' and reservationCheckOut != ''">
-				AND (RESERVATION_CHECK_IN <![CDATA[<=]]> #{reservationCheckOut}
-				OR RESERVATION_CHECK_OUT <![CDATA[<=]]> #{reservationCheckOut})
+			<when test="startDate == '' and endDate != ''">
+				AND (RESERVATION_CHECK_IN <![CDATA[<=]]> #{endDate}
+				OR RESERVATION_CHECK_OUT <![CDATA[<=]]> #{endDate})
 			</when>
-			<when test="reservationCheckOut == '' and reservationCheckIn != ''">
-				AND (RESERVATION_CHECK_IN <![CDATA[>=]]> #{reservationCheckIn} 
-				OR RESERVATION_CHECK_IN <![CDATA[>=]]> #{reservationCheckIn})
+			<when test="startDate != '' and endDate == ''">
+				AND (RESERVATION_CHECK_IN <![CDATA[>=]]> #{startDate} 
+				OR RESERVATION_CHECK_OUT <![CDATA[>=]]> #{startDate})
 			</when>
-			<when test="reservationCheckIn != '' and reservationCheckOut != ''">
-				AND (RESERVATION_CHECK_IN BETWEEN #{reservationCheckIn} AND #{reservationCheckOut}  
-				OR RESERVATION_CHECK_OUT BETWEEN #{reservationCheckIn} AND #{reservationCheckOut}  
-				OR #{reservationCheckIn} BETWEEN RESERVATION_CHECK_IN AND RESERVATION_CHECK_OUT
-				OR #{reservationCheckOut} BETWEEN RESERVATION_CHECK_IN AND RESERVATION_CHECK_OUT)
+			<when test="startDate != '' and endDate != ''">
+				AND (RESERVATION_CHECK_IN BETWEEN #{startDate} AND #{endDate}  
+				OR RESERVATION_CHECK_OUT BETWEEN #{startDate} AND #{endDate}  
+				OR #{startDate} BETWEEN RESERVATION_CHECK_IN AND RESERVATION_CHECK_OUT
+				OR #{endDate} BETWEEN RESERVATION_CHECK_IN AND RESERVATION_CHECK_OUT)
 			</when>
 			<otherwise>
 			</otherwise>
@@ -97,21 +97,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectTotalCount" resultType="Integer"> <!-- 예약 정보 전체 개수 -->
 		SELECT COUNT(*) TOTAL_COUNT FROM RESERVATION_INFO
-		WHERE RESERVATION_USERID = 'test'
+		WHERE RESERVATION_USERID = #{userId}
 		<choose>
-			<when test="reservationCheckIn == '' and reservationCheckOut != ''">
-				AND (RESERVATION_CHECK_IN <![CDATA[<=]]> #{reservationCheckOut}
-				OR RESERVATION_CHECK_OUT <![CDATA[<=]]> #{reservationCheckOut})
+			<when test="startDate == '' and endDate != ''">
+				AND (RESERVATION_CHECK_IN <![CDATA[<=]]> #{endDate}
+				OR RESERVATION_CHECK_OUT <![CDATA[<=]]> #{endDate})
 			</when>
-			<when test="reservationCheckOut == '' and reservationCheckIn != ''">
-				AND (RESERVATION_CHECK_IN <![CDATA[>=]]> #{reservationCheckIn} 
-				OR RESERVATION_CHECK_IN <![CDATA[>=]]> #{reservationCheckIn})
+			<when test="startDate != '' and endDate == ''">
+				AND (RESERVATION_CHECK_IN <![CDATA[>=]]> #{startDate} 
+				OR RESERVATION_CHECK_OUT <![CDATA[>=]]> #{startDate})
 			</when>
-			<when test="reservationCheckIn != '' and reservationCheckOut != ''">
-				AND (RESERVATION_CHECK_IN BETWEEN #{reservationCheckIn} AND #{reservationCheckOut}  
-				OR RESERVATION_CHECK_OUT BETWEEN #{reservationCheckIn} AND #{reservationCheckOut}  
-				OR #{reservationCheckIn} BETWEEN RESERVATION_CHECK_IN AND RESERVATION_CHECK_OUT
-				OR #{reservationCheckOut} BETWEEN RESERVATION_CHECK_IN AND RESERVATION_CHECK_OUT)
+			<when test="startDate != '' and endDate != ''">
+				AND (RESERVATION_CHECK_IN BETWEEN #{startDate} AND #{endDate}  
+				OR RESERVATION_CHECK_OUT BETWEEN #{startDate} AND #{endDate}  
+				OR #{startDate} BETWEEN RESERVATION_CHECK_IN AND RESERVATION_CHECK_OUT
+				OR #{endDate} BETWEEN RESERVATION_CHECK_IN AND RESERVATION_CHECK_OUT)
 			</when>
 			<otherwise>
 			</otherwise>

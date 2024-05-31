@@ -10,6 +10,6 @@
 	<%@include file="fix/header.jsp"%>
 	<div>
 		<img class="test" alt="mainlogo" src="${path}/resources/image/test.png"><br>
-		<a href="${path}/register/basics">호텔 등록</a>
+		<!-- <a href="${path}/register/basics">호텔 등록</a> -->
 	</div>
 	<%@ include file="fix/footer.jsp"%> 

@@ -15,14 +15,14 @@
 		<a class="logo" href="${path}/index"> OSKHOTEL</a>
 		<div id="loginSection">
 			<%-- 세션에 값이 있으면 로그인 상태로 간주 --%>
-			<c:if test="${not empty sessionScope}">
-				<button type="button" onclick="location.href='${path}/user/mypage'">${sessionScope.userId}
+			<c:if test="${sessionScope.userId != null}">
+				<button type="button" onclick="location.href='${path}/reservationInfo/reservationList'">${sessionScope.userId}
 					마이페이지</button>
 				<button type="button" onclick="location.href='${path}/user/logout'">로그아웃</button>
 			</c:if>
 			<%-- 세션에 값이 없으면 로그아웃 상태로 간주 --%>
-			<c:if test="${empty sessionScope}">
-				<button type="button" onclick="location.href='${path}/user/login'">로그인</button>
+			<c:if test="${sessionScope.userId == null}">
+				<button type="button" onclick="location.href='${path}/user/login'">로그인/회원가입</button>
 			</c:if>
 		</div>
 	</div>

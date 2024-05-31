@@ -63,7 +63,7 @@ public class ReservationInfoMapperTest {
 	}
 
 	private void testReservationListPagination() {
-		Pagination pagination = new Pagination(1, 5, "2024-06-05", "2024-06-10");
+		Pagination pagination = new Pagination(1, 5, "Test", "2024-06-05", "2024-06-10");
 		List<ReservationInfoVO> list = reservationInfoMapper.selectListByPagination(pagination);
 		for(ReservationInfoVO reservationInfoVO : list) {
 			log.info(reservationInfoVO);
